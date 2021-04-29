@@ -1,0 +1,34 @@
+<button type="button" (click)=" ElencoCanzoni()" class="btn btn-primary">Elenco Canzoni</button><br>
+
+<p *ngIf="ArrayCanzoni.length===0;else TabCanzoni">Non ci sono Canzoni da visualizzare!</p>
+<ng-template #TabCanzoni><h3>Tabella Canzoni:</h3></ng-template>
+<table *ngIf="ArrayCanzoni.length!==0;" style="width:100%">
+    <tr>
+      <th>IdCanzone</th>
+      <th>LinkYouTube</th>
+      <th>Episodio_ID</th>
+    </tr>
+    <tr *ngFor='let Canzoni of ArrayCanzoni'>
+      <td>{{Canzoni.IdCanzone}}</td>
+      <td>{{Canzoni.LinkYouTube}}</td>
+      <td>{{Canzoni.Episodio_ID}}</td>
+    </tr>
+ </table>
+ 
+ <table *ngIf="ArrayUrlBlob.length!==0;" style="width:100%">
+  <tr>
+    <th>Vocali</th>
+  </tr>
+  <tr *ngFor='let Url of ArrayUrlBlob'>
+    <td>
+      <div class="clearfix">
+        <audio controls="" *ngIf="Url">
+            <source [src]="sanitize(Url)" type="audio/wav">
+        </audio>
+        {{Url}}
+      </div>
+    </td>
+  </tr>
+</table>
+
+ 

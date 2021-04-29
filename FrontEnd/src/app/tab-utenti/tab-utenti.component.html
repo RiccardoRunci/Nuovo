@@ -1,0 +1,17 @@
+<hr>
+<label>Nome Utente:</label>|<label>{{ErroreNomeEmailUtente}}</label><br>
+<input type="text" #NomeUtente><br>
+<label>Email Utente:</label>|<label>{{ErroreNomeEmailUtente}}</label><br>
+<input type="text" #EmailUtente><br>
+
+<button type="button" (click)="Aggiungi(NomeUtente.value,EmailUtente.value)" class="btn btn-primary">Aggiungi</button><br>
+<button type="button" (click)="Elenco()" class="btn btn-primary">Visualizza Elenco</button><br>
+<hr>
+<label>Inserisci il nome da eliminare o da cercare:</label>|<label>{{ErroreEliminaNome}}</label><br>
+<input type="text" #EliminaNome><br>
+<button type="button" (click)="Elimina(EliminaNome.value)" class="btn btn-primary">Elimina</button><br>
+<button type="button" (click)="Cerca(EliminaNome.value)" class="btn btn-primary">Cerca</button><label>{{RispostaCerca}}</label><br>
+<hr>
+<p *ngFor="let utenti of VariabileListaUtenti$ | async">
+Id Utente: {{utenti.IdUtente}} Nome Utente: {{utenti.NomeUtente}} Email Utente: {{utenti.EmailUtente}}
+</p>
